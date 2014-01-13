@@ -10,7 +10,7 @@ def self.update_database
     
     fermentables.each do |f|
       @fermentable = {}
-      unless Fermentable.find_by_name("f['name']")
+      unless Fermentable.find_by_name(f['name'])
         @fermentable[:api_id] = f["id"]
         @fermentable[:name] = f["name"]
         @fermentable[:description] = f["description"]

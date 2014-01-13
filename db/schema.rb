@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113194036) do
+ActiveRecord::Schema.define(:version => 20140113222438) do
 
   create_table "fermentables", :force => true do |t|
     t.integer  "api_id"
@@ -59,6 +59,25 @@ ActiveRecord::Schema.define(:version => 20140113194036) do
     t.boolean  "for_aroma"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "yeasts", :force => true do |t|
+    t.text     "name"
+    t.integer  "api_id"
+    t.text     "description"
+    t.text     "yeast_type"
+    t.integer  "attenuation_min"
+    t.integer  "attenuation_max"
+    t.integer  "ferment_temp_min"
+    t.integer  "ferment_temp_max"
+    t.integer  "alcohol_tolerance_min"
+    t.integer  "alcohol_tolerance_max"
+    t.text     "supplier"
+    t.text     "product_id"
+    t.text     "yeast_format"
+    t.text     "category"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
 end
