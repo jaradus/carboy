@@ -1,0 +1,41 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="1085" measuredH="629" mockupW="910" mockupH="577">
+  <controls>
+    <control controlID="0" controlTypeID="com.balsamiq.mockups::BrowserWindow" x="175" y="52" w="910" h="577" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <color>16777215</color>
+        <text>Carboy%0Ahttp%3A//</text>
+      </controlProperties>
+    </control>
+    <control controlID="1" controlTypeID="com.balsamiq.mockups::LinkBar" x="320" y="177" w="-1" h="-1" measuredW="346" measuredH="19" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <hrefs>new_beer%26bm%3Bnew_beer.bmml%26bm%3Bnew_beer.bmml%26bm%3Bnew_beer.bmml%2C%2C%2C%2C</hrefs>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22145%2C127%2C203%2C140%22%20href%3D%22new_beer.bmml%22%20alt%3D%22new_beer%22%20id%3D%221%22/%3E%0A</map>
+        <text>New%20Beer%2C%20New%20Batch%2C%20History%2C%20New%20Review%2C%20Status</text>
+      </controlProperties>
+    </control>
+    <control controlID="2" controlTypeID="com.balsamiq.mockups::Image" x="230" y="155" w="75" h="75" measuredW="500" measuredH="500" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>index%26bm%3Bindex.bmml%26bm%3Bindex.bmml%26bm%3Bindex.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%2255%2C103%2C130%2C178%22%20href%3D%22index.bmml%22%20alt%3D%22index%22%20id%3D%222%22/%3E</map>
+        <src>./assets/Carboy.png</src>
+      </controlProperties>
+    </control>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Button" x="320" y="358" w="-1" h="-1" measuredW="95" measuredH="27" zOrder="3" locked="false" isInGroup="-1">
+      <controlProperties>
+        <href>index%26bm%3Bindex.bmml%26bm%3Bindex.bmml%26bm%3Bindex.bmml</href>
+        <map>%3Carea%20shape%3D%22rect%22%20coords%3D%22145%2C306%2C240%2C333%22%20href%3D%22index.bmml%22%20alt%3D%22index%22%20id%3D%2214%22/%3E</map>
+        <text>Create%20Beer</text>
+      </controlProperties>
+    </control>
+    <control controlID="15" controlTypeID="com.balsamiq.mockups::Title" x="320" y="245" w="-1" h="-1" measuredW="167" measuredH="43" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Add%20Beer</text>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::TextInput" x="319" y="306" w="168" h="-1" measuredW="49" measuredH="27" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>Name</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>
