@@ -16,7 +16,9 @@ fermentables_pages = HTTParty.get("http://api.brewerydb.com/v2/fermentables/?key
   
   fermentables.each do |f|
     @fermentable = {}
-    unless Fermentable.find_by_name(f['name'])
+    if Fermentable.find_by_name(f['name'])
+      puts "[fermentable] #{f['name']} already exists in database"
+    else
       @fermentable[:api_id] = f["id"]
       @fermentable[:name] = f["name"]
       @fermentable[:description] = f["description"]
@@ -41,7 +43,7 @@ fermentables_pages = HTTParty.get("http://api.brewerydb.com/v2/fermentables/?key
       @fermentable[:characteristics] = @character.join(", ")
       end
         fermentable_seed = Fermentable.create(@fermentable)
-        puts "#{fermentable_seed.name} successfully created"
+        puts "[fermentable] #{fermentable_seed.name} created"
     end
   end
 end
@@ -55,7 +57,9 @@ hops_pages = HTTParty.get("http://api.brewerydb.com/v2/hops/?key=#{ENV['BREWERYA
   
   hops.each do |h|
     @hop = {}
-    unless Hop.find_by_name(h['name'])
+    if Hop.find_by_name(h['name'])
+      puts "[hop] #{h['name']} already exists in database"
+    else
       @hop[:name] = h["name"]
       @hop[:api_id] = h["id"]
       @hop[:description] = h["description"]
@@ -79,7 +83,7 @@ hops_pages = HTTParty.get("http://api.brewerydb.com/v2/hops/?key=#{ENV['BREWERYA
       @hop[:for_flavor] = h["forFlavor"]
       @hop[:for_aroma] = h["forAroma"]
       hop_seed = Hop.create(@hop)
-      puts "#{hop_seed.name} successfully created"
+      puts "[hop] #{hop_seed.name} created"
     end
   end
 end
@@ -93,7 +97,9 @@ yeasts_pages = HTTParty.get("http://api.brewerydb.com/v2/yeasts/?key=#{ENV['BREW
   
   yeasts.each do |y|
     @yeast = {}
-    unless Yeast.find_by_name(y['name'])
+    if Yeast.find_by_name(y['name'])
+      puts "[yeast] #{y['name']} already exists in database"
+    else
       # Example: @yeast[:name] = f["name"]
       @yeast[:name] = y["name"]
       @yeast[:api_id] = y["id"]
@@ -110,7 +116,7 @@ yeasts_pages = HTTParty.get("http://api.brewerydb.com/v2/yeasts/?key=#{ENV['BREW
       @yeast[:yeast_format] = y["yeastFormat"]
       @yeast[:category] = y["category"]
       yeast_seed = Yeast.create(@yeast)
-      puts "#{yeast_seed.name} successfully created"
+      puts "[yeast] #{yeast_seed.name} created"
     end
   end
 end
@@ -121,8 +127,9 @@ styles = HTTParty.get("http://api.brewerydb.com/v2/styles/?key=#{ENV['BREWERYAPI
   
 styles.each do |s|
   @style = {}
-  unless RegionalStyle.find_by_name(s['name'])
-
+  if RegionalStyle.find_by_name(s['name'])
+    puts "[regional style] #{s['name']} already exists in database"
+  else
     @style[:name] = s['name']
     @style[:description] = s['description']
     @style[:api_id] = s['id']
@@ -139,7 +146,7 @@ styles.each do |s|
     @style[:fg_max] = s['fgMax'] ? s['fgMax'].to_f*1000 : 9999
 
     regionalstyle_seed = RegionalStyle.create(@style)
-    puts "#{regionalstyle_seed.name} successfully created"
+    puts "[regional style] #{regionalstyle_seed.name} created"
   end
 end
 
@@ -180,25 +187,31 @@ item_list = products_list.css('li.item')
     @time_unit = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[6].to_s.split(" ")[1]
     @recipe_link = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[1]["href"]
 
-  beer_seed = Beer.create({
-      name: @beer_name,
-      description: @beer_description,
-      beer_style: @beer_style,
-      color: @color,
-      original_gravity: @original_gravity,
-      time_to_make: @time_to_make,
-      time_unit: @time_unit,
-      image_url: @image_url,
-      country_style: @country_style,
-      recipe_link: @recipe_link
-    })
-  puts "#{beer_seed.name} successfully created"
+  if Beer.find_by_name(@beer_name)
+    puts "[beer] #{@beer_name} already in database"
+  else
+    beer_seed = Beer.create({
+        name: @beer_name,
+        description: @beer_description,
+        beer_style: @beer_style,
+        color: @color,
+        original_gravity: @original_gravity,
+        time_to_make: @time_to_make,
+        time_unit: @time_unit,
+        image_url: @image_url,
+        country_style: @country_style,
+        recipe_link: @recipe_link
+      })
+    puts "[beer] #{beer_seed.name} created"
+  end
 end
 
 
-
-
-
+# Seed Complete Notification
+# ====================================================================
+puts "***************************"
+puts "Seed successfully completed"
+puts "***************************"
 
 
 
