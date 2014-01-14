@@ -40,11 +40,8 @@ fermentables_pages = HTTParty.get("http://api.brewerydb.com/v2/fermentables/?key
         end
       @fermentable[:characteristics] = @character.join(", ")
       end
-      begin
-        Fermentable.create(@fermentable)
-      rescue
-        binding.pry
-      end
+        fermentable_seed = Fermentable.create(@fermentable)
+        puts "#{fermentable_seed.name} successfully created"
     end
   end
 end
@@ -81,7 +78,8 @@ hops_pages = HTTParty.get("http://api.brewerydb.com/v2/hops/?key=#{ENV['BREWERYA
       @hop[:for_bittering] = h["forBittering"]
       @hop[:for_flavor] = h["forFlavor"]
       @hop[:for_aroma] = h["forAroma"]
-      Hop.create(@hop)
+      hop_seed = Hop.create(@hop)
+      puts "#{hop_seed.name} successfully created"
     end
   end
 end
@@ -111,7 +109,8 @@ yeasts_pages = HTTParty.get("http://api.brewerydb.com/v2/yeasts/?key=#{ENV['BREW
       @yeast[:product_id] = y["productId"]
       @yeast[:yeast_format] = y["yeastFormat"]
       @yeast[:category] = y["category"]
-      Yeast.create(@yeast)
+      yeast_seed = Yeast.create(@yeast)
+      puts "#{yeast_seed.name} successfully created"
     end
   end
 end
@@ -139,7 +138,8 @@ styles.each do |s|
     @style[:fg_min] = s['fgMin'] ? s['fgMin'].to_f*1000 : 9999
     @style[:fg_max] = s['fgMax'] ? s['fgMax'].to_f*1000 : 9999
 
-    RegionalStyle.create(@style)
+    regionalstyle_seed = RegionalStyle.create(@style)
+    puts "#{regionalstyle_seed.name} successfully created"
   end
 end
 
@@ -180,18 +180,19 @@ item_list = products_list.css('li.item')
     @time_unit = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[6].to_s.split(" ")[1]
     @recipe_link = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[1]["href"]
 
-  Beer.create({
-      :name = @beer_name,
-      :description = @beer_description,
-      :beer_style = @beer_style,
-      :color = @color,
-      :original_gravity = @original_gravity,
-      :time_to_make = @time_to_make,
-      :time_unit = @time_unit,
-      :image_url = @image_url,
-      :country_style = @country_style,
-      :recipe_link = @recipe_link
+  beer_seed = Beer.create({
+      name: @beer_name,
+      description: @beer_description,
+      beer_style: @beer_style,
+      color: @color,
+      original_gravity: @original_gravity,
+      time_to_make: @time_to_make,
+      time_unit: @time_unit,
+      image_url: @image_url,
+      country_style: @country_style,
+      recipe_link: @recipe_link
     })
+  puts "#{beer_seed.name} successfully created"
 end
 
 
