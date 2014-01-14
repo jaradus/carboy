@@ -7,6 +7,8 @@ class CreateReviewsTable < ActiveRecord::Migration
       t.integer     :rating
       t.text        :image_url
       t.integer     :batch_id
+
+      t.timestamps
     end
 
   end

@@ -12,7 +12,7 @@ class CreateBatchesTable < ActiveRecord::Migration
       t.date      :brew_date
       t.date      :secondary_date
       t.date      :bottling_date
-      t.belongs_to :user
+      t.integer   :user_id
 
       t.timestamp  
     end

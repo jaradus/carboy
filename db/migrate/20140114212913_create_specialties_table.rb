@@ -4,6 +4,8 @@ class CreateSpecialtiesTable < ActiveRecord::Migration
       t.text    :name
       t.text    :description
       t.text    :type
+
+      t.timestamps
     end
   end
 end

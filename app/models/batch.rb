@@ -22,6 +22,7 @@ class Batch < ActiveRecord::Base
   has_many :reviews
 
   belongs_to :beer
+  belongs_to :user
 
   accepts_nested_attributes_for :fermentables, :hops, :yeasts, :specialties
 
