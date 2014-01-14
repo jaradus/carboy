@@ -1,6 +1,6 @@
 Carboy::Application.routes.draw do
 
-  resources :hops, :fermentables
+  resources :hops, :fermentables, :beers
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

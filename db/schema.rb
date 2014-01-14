@@ -11,7 +11,67 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140113222438) do
+ActiveRecord::Schema.define(:version => 20140114055753) do
+
+  create_table "batches", :force => true do |t|
+    t.integer "beer_id"
+    t.text    "name"
+    t.text    "description"
+    t.text    "notes"
+    t.text    "label_url"
+    t.integer "rating"
+    t.integer "original_gravity", :default => 9999
+    t.integer "final_gravity",    :default => 9999
+    t.date    "brew_date"
+    t.date    "secondary_date"
+    t.date    "bottling_date"
+    t.text    "recipe_link"
+    t.integer "user_id"
+  end
+
+  create_table "batches_fermentables", :force => true do |t|
+    t.integer  "batch_id"
+    t.integer  "fermentable_id"
+    t.integer  "quantity"
+    t.text     "unit_measure"
+    t.integer  "minutes_in_boil"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "batches_specialties", :force => true do |t|
+    t.integer  "batch_id"
+    t.integer  "specialty_id"
+    t.integer  "quantity"
+    t.text     "unit_measure"
+    t.integer  "minutes_in_kettle"
+    t.text     "type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "batches_yeasts", :force => true do |t|
+    t.integer  "batch_id"
+    t.integer  "yeast_id"
+    t.integer  "quantity"
+    t.text     "unit_measure"
+    t.boolean  "starter"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  create_table "beers", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.integer  "regional_style_id"
+    t.text     "beer_style"
+    t.text     "color"
+    t.integer  "original_gravity",  :default => 9999
+    t.integer  "time_to_make"
+    t.text     "image_url"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
 
   create_table "fermentables", :force => true do |t|
     t.integer  "api_id"
@@ -59,6 +119,45 @@ ActiveRecord::Schema.define(:version => 20140113222438) do
     t.boolean  "for_aroma"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "regional_styles", :force => true do |t|
+    t.text     "name"
+    t.text     "description"
+    t.integer  "api_id"
+    t.text     "beer_category"
+    t.float    "ibu_min"
+    t.float    "ibu_max"
+    t.float    "abv_min"
+    t.float    "abv_max"
+    t.float    "srm_min"
+    t.float    "srm_max"
+    t.integer  "og_min"
+    t.integer  "og_max"
+    t.integer  "fg_min"
+    t.integer  "fg_max"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "regionalstyles_beers", :force => true do |t|
+    t.integer  "beer_id"
+    t.integer  "regional_style_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.text    "title"
+    t.date    "review_date"
+    t.text    "review"
+    t.text    "image_url"
+    t.integer "batch_id"
+  end
+
+  create_table "specialty", :force => true do |t|
+    t.text "name"
+    t.text "description"
   end
 
   create_table "yeasts", :force => true do |t|

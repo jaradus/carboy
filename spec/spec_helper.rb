@@ -37,4 +37,7 @@ RSpec.configure do |config|
   config.order = "random"
 
   config.formatter = :documentation
+
+  include Warden::Test::Helpers
+  Warden.test_mode!
 end

@@ -1,0 +1,10 @@
+<h1><%= @beer.name %></h1>
+
+<table>
+  <% @beer.attributes.each do |k,v| %>
+    <tr class="beer_<%= k %>">
+      <td><%= k.humanize %></td>
+      <td><%= v %></td>
+    </tr>
+  <% end %>
+</table>

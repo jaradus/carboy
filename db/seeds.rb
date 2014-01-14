@@ -20,7 +20,7 @@ fermentables_pages = HTTParty.get("http://api.brewerydb.com/v2/fermentables/?key
       @fermentable[:api_id] = f["id"]
       @fermentable[:name] = f["name"]
       @fermentable[:description] = f["description"]
-      @fermentable[:country_iso_code] = f["countryOfOrigin"]
+      @fermentable[:country_iso_code] = f["country"] && h["country"]["displayName"]
       @fermentable[:srm_id] = f["srmId"]
       @fermentable[:srm_precise] = f["srmPrecise"]
       @fermentable[:moisture_content] = f["moistureContent"]
@@ -40,7 +40,11 @@ fermentables_pages = HTTParty.get("http://api.brewerydb.com/v2/fermentables/?key
         end
       @fermentable[:characteristics] = @character.join(", ")
       end
-      Fermentable.create(@fermentable)
+      begin
+        Fermentable.create(@fermentable)
+      rescue
+        binding.pry
+      end
     end
   end
 end
@@ -58,7 +62,7 @@ hops_pages = HTTParty.get("http://api.brewerydb.com/v2/hops/?key=#{ENV['BREWERYA
       @hop[:name] = h["name"]
       @hop[:api_id] = h["id"]
       @hop[:description] = h["description"]
-      @hop[:country_iso_code] = h["countryOfOrigin"]
+      @hop[:country_iso_code] = h["country"] && h["country"]["displayName"]
       @hop[:alpha_acid_min] = h["alphaAcidMin"]
       @hop[:alpha_acid_max] = h["alphaAcidMax"]
       @hop[:beta_acid_min] = h["betaAcidMin"]
@@ -111,3 +115,32 @@ yeasts_pages = HTTParty.get("http://api.brewerydb.com/v2/yeasts/?key=#{ENV['BREW
     end
   end
 end
+
+# Seeds Regional Styles
+# ====================================================================
+styles = HTTParty.get("http://api.brewerydb.com/v2/styles/?key=#{ENV['BREWERYAPI_KEY']}")["data"]
+  
+styles.each do |s|
+  @style = {}
+  unless RegionalStyle.find_by_name(s['name'])
+
+    @style[:name] = s['name']
+    @style[:description] = s['description']
+    @style[:api_id] = s['id']
+    @style[:beer_category] = s['category']['name']
+    @style[:ibu_min] = s['ibuMin']
+    @style[:ibu_max] = s['ibuMax']
+    @style[:abv_min] = s['abvMin']
+    @style[:abv_max] = s['abvMax']
+    @style[:srm_min] = s['srmMin']
+    @style[:srm_max] = s['srmMax']
+    @style[:og_min] = s['ogMin'] ? s['ogMin'].to_f*1000 : 9999
+    @style[:og_max] = s['ogMax'] ? s['ogMax'].to_f*1000 : 9999
+    @style[:fg_min] = s['fgMin'] ? s['fgMin'].to_f*1000 : 9999
+    @style[:fg_max] = s['fgMax'] ? s['fgMax'].to_f*1000 : 9999
+
+    RegionalStyle.create(@style)
+  end
+end
+
+

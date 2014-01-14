@@ -1,0 +1,44 @@
+<h1><%= @beer.name %></h1>
+
+<nav>
+    <span><a href="#fermentable_options">Fermentables</a></span> |
+    <span><a href="#hop_options">Hops</a></span> |
+    <span><a href="#yeast_options">Yeast</a></span> |
+    <span><a href="#specialty_options">Specialty</a></span>
+</nav>
+
+<div id="fermentable_options">
+  <h2>Fermentables</h2>
+</div>
+
+<%= form_for @beer do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+
+  <%= f.label :beer_style %>
+  <%= f.text_field :beer_style %>
+
+  <%= f.label :regional_style %>
+  <%= f.collection_select(:regional_style_id, RegionalStyle.all, :id, :name, prompt: true) %> 
+
+  <%= f.label :color %>
+  <%= f.text_field :color %>  
+
+  <%= f.label :original_gravity %>
+  <%= f.number_field :original_gravity %>  
+
+  <%= f.label :time_to_make %>
+  <%= f.number_field :time_to_make %>  
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %>  
+
+<% end %>
+
+<div id="yeast_options">
+  <h2>Yeast</h2>
+</div>
+
+<div id="specialty_options">
+  <h2>Specialty</h2>
+</div>
