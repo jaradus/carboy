@@ -153,6 +153,7 @@ end
 # Northern Brewer Recipe Scrape
 # ====================================================================
 require 'open-uri' # Put at the top of seed.rd
+require 'nokogiri'
 
 data = Nokogiri::HTML(open("http://www.northernbrewer.com/shop/brewing/recipe-kits/extract-kits?dir=asc&limit=all&mode=list&order=name"))
 
