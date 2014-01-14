@@ -5,12 +5,12 @@ class CreateRegionalStyleTable < ActiveRecord::Migration
       t.text        :description
       t.integer     :api_id
       t.text        :beer_category
-      t.float     :ibu_min
-      t.float     :ibu_max
-      t.float     :abv_min
-      t.float     :abv_max
-      t.float     :srm_min
-      t.float     :srm_max
+      t.float       :ibu_min
+      t.float       :ibu_max
+      t.float       :abv_min
+      t.float       :abv_max
+      t.float       :srm_min
+      t.float       :srm_max
       t.integer     :og_min
       t.integer     :og_max
       t.integer     :fg_min

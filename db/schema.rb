@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114055753) do
+ActiveRecord::Schema.define(:version => 20140114185007) do
 
   create_table "batches", :force => true do |t|
     t.integer "beer_id"
@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(:version => 20140114055753) do
     t.integer  "quantity"
     t.text     "unit_measure"
     t.integer  "minutes_in_kettle"
-    t.text     "type"
+    t.text     "purpose"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
   end
@@ -71,6 +71,13 @@ ActiveRecord::Schema.define(:version => 20140114055753) do
     t.text     "image_url"
     t.datetime "created_at",                          :null => false
     t.datetime "updated_at",                          :null => false
+  end
+
+  create_table "beers_regional_styles", :force => true do |t|
+    t.integer  "beer_id"
+    t.integer  "regional_style_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
   end
 
   create_table "fermentables", :force => true do |t|
@@ -140,17 +147,11 @@ ActiveRecord::Schema.define(:version => 20140114055753) do
     t.datetime "updated_at",    :null => false
   end
 
-  create_table "regionalstyles_beers", :force => true do |t|
-    t.integer  "beer_id"
-    t.integer  "regional_style_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-  end
-
   create_table "reviews", :force => true do |t|
     t.text    "title"
     t.date    "review_date"
     t.text    "review"
+    t.integer "rating"
     t.text    "image_url"
     t.integer "batch_id"
   end
@@ -158,6 +159,7 @@ ActiveRecord::Schema.define(:version => 20140114055753) do
   create_table "specialty", :force => true do |t|
     t.text "name"
     t.text "description"
+    t.text "type"
   end
 
   create_table "yeasts", :force => true do |t|

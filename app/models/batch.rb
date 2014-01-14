@@ -1,6 +1,6 @@
 class Batch < ActiveRecord::Base
 
-  attr_accessible :beer_id, :name, :description, :label_url, :rating
+  attr_accessible :beer_id, :name, :description, :notes, :label_url, :rating, :original_gravity, :final_gravity, :brew_date, :secondary_date, :bottling_date, :recipe_link
 
   # Fermentables
   has_many :batches_fermentables, :dependent => :destroy

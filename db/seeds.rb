@@ -108,7 +108,7 @@ yeasts_pages = HTTParty.get("http://api.brewerydb.com/v2/yeasts/?key=#{ENV['BREW
       @yeast[:alcohol_tolerance_min] = y["alcoholToleranceMin"]
       @yeast[:alcohol_tolerance_max] = y["alcoholToleranceMax"]
       @yeast[:supplier] = y["supplier"]
-      @yeast[:product_id] = y["productID"]
+      @yeast[:product_id] = y["productId"]
       @yeast[:yeast_format] = y["yeastFormat"]
       @yeast[:category] = y["category"]
       Yeast.create(@yeast)
@@ -142,5 +142,62 @@ styles.each do |s|
     RegionalStyle.create(@style)
   end
 end
+
+# Northern Brewer Recipe Scrape
+# ====================================================================
+require 'open-uri' # Put at the top of seed.rd
+
+data = Nokogiri::HTML(open("http://www.northernbrewer.com/shop/brewing/recipe-kits/extract-kits?dir=asc&limit=all&mode=list&order=name"))
+
+products_list = data.css('ol.products-list')
+item_list = products_list.css('li.item')
+
+
+@items = item_list.children.length
+# Get the product page link
+(1..@items).step(5) do |n|
+  link = item_list.children[n]["href"] #Start at 1 and go every 5
+  product_page = Nokogiri::HTML(open(link))
+  
+  # Get the beer name from the product page
+    product_name = product_page.css('div.product-name')
+    @beer_name = product_name.children[1].children[0].to_s # This is the beer's name
+
+  # Get the beer image from the product page
+    @image_url = product_page.css('div.product-img-box p.product-image').children[1]["href"] # This is the beer's image
+
+  # Get the beer description from the product page
+    product_description = product_page.css('div.product-collateral div.collateral-box div.std')[0].children[1].to_s # This is the beer's description with html tags
+    @beer_description = product_description.gsub(/<\/?[^>]*>/, '') # This is the beer's description cleaned of links and HTML tags
+
+  # Gets the table with the beer's additional information
+    product_details = product_page.css('div.product-collateral div.collateral-box table.data-table tbody')
+    @country_style = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[2].to_s
+    @beer_style = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[3].to_s
+    @color = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[4].to_s
+    @original_gravity = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[5].to_s.to_i
+    @time_to_make = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[6].to_s.to_i
+    @time_unit = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[6].to_s.split(" ")[1]
+    @recipe_link = product_page.css('div.product-collateral div.collateral-box table.data-table tbody td.data').children[1]["href"]
+
+  Beer.create({
+      :name = @beer_name,
+      :description = @beer_description,
+      :beer_style = @beer_style,
+      :color = @color,
+      :original_gravity = @original_gravity,
+      :time_to_make = @time_to_make,
+      :time_unit = @time_unit,
+      :image_url = @image_url,
+      :country_style = @country_style,
+      :recipe_link = @recipe_link
+    })
+end
+
+
+
+
+
+
 
 

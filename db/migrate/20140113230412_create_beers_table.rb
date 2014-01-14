@@ -8,7 +8,10 @@ class CreateBeersTable < ActiveRecord::Migration
       t.text        :color
       t.integer     :original_gravity, default: 9999
       t.integer     :time_to_make
+      t.string      :time_unit
       t.text        :image_url
+      t.text        :country_style
+      t.text        :recipe_link
 
       t.timestamps
     end
