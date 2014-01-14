@@ -165,6 +165,7 @@ DEPENDENCIES
   devise
   httparty
   jquery-rails
+  nokogiri
   pg
   pry
   pry-rails
