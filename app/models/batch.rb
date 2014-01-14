@@ -1,6 +1,6 @@
 class Batch < ActiveRecord::Base
 
-  attr_accessible :beer_id, :name, :description, :notes, :label_url, :rating, :original_gravity, :final_gravity, :brew_date, :secondary_date, :bottling_date, :recipe_link
+  attr_accessible :beer_id, :name, :description, :notes, :label_url, :rating, :original_gravity, :final_gravity, :brew_date, :secondary_date, :bottling_date, :fermentables_attributes, :hops_attributes, :yeasts_attributes, :specialties_attributes
 
   # Fermentables
   has_many :batches_fermentables, :dependent => :destroy
@@ -22,5 +22,7 @@ class Batch < ActiveRecord::Base
   has_many :reviews
 
   belongs_to :beer
+
+  accepts_nested_attributes_for :fermentables, :hops, :yeasts, :specialties
 
 end

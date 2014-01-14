@@ -1,6 +1,6 @@
-class CreateSpecialtyTable < ActiveRecord::Migration
+class CreateSpecialtiesTable < ActiveRecord::Migration
   def change
-    create_table :specialty do |t|
+    create_table :specialties do |t|
       t.text    :name
       t.text    :description
       t.text    :type

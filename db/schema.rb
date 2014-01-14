@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140114185007) do
+ActiveRecord::Schema.define(:version => 20140114212913) do
 
   create_table "batches", :force => true do |t|
     t.integer "beer_id"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(:version => 20140114185007) do
     t.date    "brew_date"
     t.date    "secondary_date"
     t.date    "bottling_date"
-    t.text    "recipe_link"
     t.integer "user_id"
   end
 
@@ -159,7 +158,7 @@ ActiveRecord::Schema.define(:version => 20140114185007) do
     t.integer "batch_id"
   end
 
-  create_table "specialty", :force => true do |t|
+  create_table "specialties", :force => true do |t|
     t.text "name"
     t.text "description"
     t.text "type"
