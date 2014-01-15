@@ -11,6 +11,14 @@
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
 
+<nav>
+  <span><a href=<%= beers_path %>>Beers</a></span> |
+  <span><a href=<%= batches_path %>>Batches</a></span> |
+  <span><a href=<%= fermentables_path %>>Fermentables</a></span> |
+  <span><a href=<%= hops_path %>>Hops</a></span> |
+  <span><a href=<%= yeasts_path %>>Yeast</a></span> |
+  <span><a href=<%= specialties_path %>>Specialty Items</a></span>
+</nav>
 
 <%= yield %>
 

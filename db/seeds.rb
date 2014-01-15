@@ -152,7 +152,7 @@ end
 
 # Northern Brewer Recipe Scrape
 # ====================================================================
-require 'open-uri' # Put at the top of seed.rd
+require 'open-uri'
 require 'nokogiri'
 
 data = Nokogiri::HTML(open("http://www.northernbrewer.com/shop/brewing/recipe-kits/extract-kits?dir=asc&limit=all&mode=list&order=name"))
@@ -175,8 +175,10 @@ item_list = products_list.css('li.item')
     @image_url = product_page.css('div.product-img-box p.product-image').children[1]["href"] # This is the beer's image
 
   # Get the beer description from the product page
-    product_description = product_page.css('div.product-collateral div.collateral-box div.std')[0].children[1].to_s # This is the beer's description with html tags
-    @beer_description = product_description.gsub(/<\/?[^>]*>/, '') # This is the beer's description cleaned of links and HTML tags
+    product_description = product_page.css('div.std').to_s # This is the beer's description with html tags
+    pd_two = product_description.gsub(/<\/?[^>]*>/, '') # This is the beer's description cleaned of links and HTML tags
+    pd_three = pd_two.gsub(/ *\n+/, '')
+    @beer_description = pd_three.gsub(/ *\r+/, '').strip
 
   # Gets the table with the beer's additional information
     product_details = product_page.css('div.product-collateral div.collateral-box table.data-table tbody')

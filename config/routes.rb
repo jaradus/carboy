@@ -4,7 +4,7 @@ Carboy::Application.routes.draw do
 
   root :to => "home#index"
 
-  resources :hops, :fermentables, :beers
+  resources :hops, :fermentables, :beers, :batches, :yeasts, :specialties
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

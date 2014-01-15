@@ -1,10 +1,27 @@
-<h1><%= @beer.name %></h1>
+<h1>Beers</h1>
 
 <table>
-  <% @beer.attributes.each do |k,v| %>
-    <tr class="beer_<%= k %>">
-      <td><%= k.humanize %></td>
-      <td><%= v %></td>
+  <thead>
+    <tr>
+      <% @items_header.each do |header| %>
+        <td><%= header.humanize %></td>
+      <% end %>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td><%= item.name %></td>
+        <td><%= item.regional_style_id %></td>
+        <td><%= item.beer_style %></td>
+        <td><%= item.color %></td>
+        <td><%= item.original_gravity %></td>
+        <td><%= item.time_to_make %></td>
+        <td><%= item.time_unit %></td>
+        <td><img height='50px' src="<%= item.image_url %>"/></td>
+        <td><%= item.country_style %></td>
+        <td><a href="<%= item.recipe_link %>">Recipe</a></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

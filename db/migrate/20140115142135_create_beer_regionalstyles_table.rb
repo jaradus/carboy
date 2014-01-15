@@ -1,6 +1,6 @@
-class CreateBeersRegionalStyleTable < ActiveRecord::Migration
+class CreateBeerRegionalstylesTable < ActiveRecord::Migration
   def change
-    create_table :beers_regional_styles do |t|
+    create_table :beers_regionalstyle do |t|
       t.integer :beer_id
       t.integer :regional_style_id
 
