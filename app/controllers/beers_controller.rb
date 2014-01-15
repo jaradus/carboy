@@ -22,7 +22,7 @@ class BeersController < ApplicationController
 
   def edit
     @beer = Beer.find(params[:id])
-    @regional_styles = RegionalStyle.all
+    @regional_styles = Regionalstyle.all
   end
 
   def show

@@ -1,3 +1,55 @@
+/* Global Overrides */
+
+td {
+  text-align: left;
+}
+
+/* Homepage */
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -2;
+}
+
+.transparent-overlay {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+  background-color: rgba(59,59,59,0.73); 
+  z-index: 1;
+}
+
+.home-overlay {
+  position: relative;
+  z-index: 1;
+  /* Preserve aspect ratio */
+  min-width: 100%;
+  min-height: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.home-overlay img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.home-overlay:hover img {
+  background-image: url('/assets/carboy_grey.png')
+}
+
+
+/* Item Show */
+
 .item-image {
   width: 350px;
 }
@@ -12,10 +64,6 @@
 
 .header {
   font-weight: bold;
-  text-align: left;
-}
-
-td {
   text-align: left;
 }
 
