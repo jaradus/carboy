@@ -6,6 +6,8 @@ Carboy::Application.routes.draw do
 
   resources :hops, :fermentables, :beers, :batches, :yeasts, :specialties
 
+  match 'user/:id/dashboard' => 'home#dashboard', :as => :dashboard
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
