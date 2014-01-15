@@ -1,0 +1,61 @@
+<div class="row">
+    <div class="row">
+      <div class="large-12 columns"><h2><%= @item.name %></h2></div> 
+    </div>
+    <hr>
+
+  <!-- Information Container Start -->
+  <ul class="large-block-grid-2 no-bullet">
+    
+      <!-- Left block -->
+      <li class='left-block'>
+        <img class="item-image" src="<%= @item.image_url %>" alt="">
+        <table>
+          <thead>
+            <tr>
+              <th colspan="2"><h2 class="technicals-header"><small>Technicals</small></h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <% if @item.regionalstyle %>
+                <td class="header">Regional Style</td>
+                <td><%= @item.regionalstyle %></td>
+              <% else %>
+                <td class="header">Country Style</td>
+                <td><%= @item.country_style %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <td class="header">Style</td>
+              <td><%= @item.beer_style %></td>
+            </tr>
+            <tr>
+              <td class="header">Color</td>
+              <td><%= @item.color %></td>
+            </tr>
+            <tr>
+              <td class="header">Expected O.G.</td>
+              <td><%= @item.original_gravity %></td>
+            </tr>
+            <tr>
+              <td class="header">Minimum Time</td>
+              <td><%= @item.time_to_make %> <%= @item.time_unit %></td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <!-- Right Block -->
+      <li class='right-block'>
+        <h3 class="subheader">Description</h3>
+        <%= @item.description %></br>
+        <hr>
+          <a href="<%= new_batch_path %>" class="button small">Brew a Batch</a>
+          <a href="<%= @item.recipe_link %>" class="button small">Recipe</a>
+          <a href="<%= edit_beer_path %>" class="button small">Edit Beer</a>
+      </li>
+
+  </ul>
+  <!-- Information Container End -->
+
+</div>

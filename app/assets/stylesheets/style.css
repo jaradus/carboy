@@ -1,0 +1,25 @@
+.item-image {
+  width: 350px;
+}
+
+.left-block {
+  text-align: center;
+}
+
+.left-block table {
+  margin: 0 auto;
+}
+
+.header {
+  font-weight: bold;
+  text-align: left;
+}
+
+td {
+  text-align: left;
+}
+
+.technicals-header {
+  margin-top: -17px;
+  margin-bottom: -3px;
+}
