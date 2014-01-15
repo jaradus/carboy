@@ -1,19 +1,37 @@
+<h1>Hops</h1>
+
 <table>
   <thead>
     <tr>
-      <% @hops_header.each do |h| %>
-      <td><%= h.humanize %></td>
+      <% @items_header.each do |header| %>
+        <th><%= header.humanize %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @hops.each do |hop| %>
-    <tr>
-    <!-- TODO: Need to remove ids, etc from the the hops -->
-      <% hop.attributes.each do |k,v| %>
-      <td><%= v %></td>
-      <% end %>
-    </tr>
+    <% @items.each do |item| %>
+        <tr>
+            <td><a href="<%= hop_path(item) %>"><%= item.name %></a></td>
+            <td><%= item.country_iso_code %></td>
+            <td><%= item.alpha_acid_min %></td>
+            <td><%= item.alpha_acid_max %></td>
+            <td><%= item.beta_acid_min %></td>
+            <td><%= item.beta_acid_max %></td>
+            <td><%= item.humulene_min %></td>
+            <td><%= item.humulene_max %></td>
+            <td><%= item.caryophyllene_min %></td>
+            <td><%= item.caryophyllene_max %></td>
+            <td><%= item.cohumulone_min %></td>
+            <td><%= item.cohumulone_max %></td>
+            <td><%= item.myrcene_min %></td>
+            <td><%= item.myrcene_max %></td>
+            <td><%= item.farnesene_min %></td>
+            <td><%= item.farnesene_max %></td>
+            <td><%= item.is_noble %></td>
+            <td><%= item.for_bittering %></td>
+            <td><%= item.for_flavor %></td>
+            <td><%= item.for_aroma %></td>
+        </tr>
     <% end %>
   </tbody>
 </table>

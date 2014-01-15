@@ -127,7 +127,7 @@ styles = HTTParty.get("http://api.brewerydb.com/v2/styles/?key=#{ENV['BREWERYAPI
   
 styles.each do |s|
   @style = {}
-  if RegionalStyle.find_by_name(s['name'])
+  if Regionalstyle.find_by_name(s['name'])
     puts "[regional style] #{s['name']} already exists in database"
   else
     @style[:name] = s['name']
@@ -145,7 +145,7 @@ styles.each do |s|
     @style[:fg_min] = s['fgMin'] ? s['fgMin'].to_f*1000 : 9999
     @style[:fg_max] = s['fgMax'] ? s['fgMax'].to_f*1000 : 9999
 
-    regionalstyle_seed = RegionalStyle.create(@style)
+    regionalstyle_seed = Regionalstyle.create(@style)
     puts "[regional style] #{regionalstyle_seed.name} created"
   end
 end

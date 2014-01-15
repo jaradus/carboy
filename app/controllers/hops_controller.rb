@@ -1,15 +1,15 @@
 class HopsController < ApplicationController
 
   def index
-    # Requests hops from the database
-    @hops = Hop.all
-    raw_hop_header = Hop.column_names()
-    # Gets hop table headers, and removes database-specific information
-      @hops_header = []
-      exclude_list = ["id", "created_at", "updated_at"]
-      raw_hop_header.each do |header|
+    # Requests beers from the database
+    @items = Hop.all
+    raw_header = Hop.column_names()
+    # Gets fermentable table headers, and removes database-specific information
+      @items_header = []
+      exclude_list = ["id", "created_at", "updated_at", "api_id", "description"]
+      raw_header.each do |header|
         unless exclude_list.include? header
-          @hops_header << header
+          @items_header << header
         end
       end
   end

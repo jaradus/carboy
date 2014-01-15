@@ -1,6 +1,6 @@
-class CreateRegionalStyleTable < ActiveRecord::Migration
+class CreateRegionalstyleTable < ActiveRecord::Migration
   def change
-    create_table :regional_styles do |t|
+    create_table :regionalstyles do |t|
       t.text        :name
       t.text        :description
       t.integer     :api_id
