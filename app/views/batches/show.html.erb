@@ -44,6 +44,58 @@
             </tbody>
           </table>
         </div>
+
+        <div class="large-12 columns">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2"><h2 class="technicals-header"><small>Fermentables</small></h2></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @item.fermentables.each do |fermentable| %>
+              <tr>
+                <td><%= fermentable.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="large-12 columns">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2"><h2 class="technicals-header"><small>Yeast</small></h2></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @item.yeasts.each do |yeast| %>
+              <tr>
+                <td><%= yeast.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="large-12 columns">
+          <table>
+            <thead>
+              <tr>
+                <th colspan="2"><h2 class="technicals-header"><small>Specialty Items</small></h2></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @item.specialties.each do |specialty| %>
+              <tr>
+                <td><%= specialty.name %></td>
+              </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+
         <div class="large-12 columns">
           <h3 class="subheader">Edit</h3>
           <hr>

@@ -1,0 +1,12 @@
+
+    <td><%= builder.check_box :used %></td>
+
+    <td><strong><%= fermentable.name %></strong></td>
+
+    <td><%= builder.text_field :quantity, :placeholder => "Quantity" %></td>
+    
+    <td><%= builder.text_field :unit_measure, :placeholder => "Unit measure" %></td>
+    
+    <td><%= builder.text_field :minutes_in_boil, :placeholder => "Minutes in boil" %></td>
+
+    <%= builder.hidden_field :fermentable_id, :value => fermentable.id  %>

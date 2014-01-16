@@ -68,7 +68,27 @@
     <dd>
       <a href="#fermentable_options"><h2 data-magellan-destination="fermentable_options">Fermentables</h2></a>
       <div id="fermentable_options">
-        
+        <table>
+          <% Fermentable.all.each do |fermentable| %>
+          <tr>
+            <%= f.fields_for "fermentable_#{fermentable.id}", nil, {} do |builder| %>
+              
+              <td><%= builder.check_box :used %></td>
+
+              <td><strong><%= fermentable.name %></strong></td>
+
+              <td><%= builder.text_field :quantity, :placeholder => "Quantity" %></td>
+              
+              <td><%= builder.text_field :unit_measure, :placeholder => "Unit measure" %></td>
+              
+              <td><%= builder.text_field :minutes_in_boil, :placeholder => "Minutes in boil" %></td>
+
+              <%= builder.hidden_field :fermentable_id, :value => fermentable.id  %>
+
+            <% end %>
+          </tr>
+          <% end %>
+          </table>
       </div>
     </dd>
 
@@ -99,21 +119,65 @@
         </tr>
         <% end %>
         </table>
-
       </div>
     </dd>
 
     <dd>
       <a href="#yeast_options"><h2 data-magellan-destination="yeast_options">Yeast</h2></a>
       <div id="yeast_options">
-        
+        <table>
+          <% Yeast.all.each do |yeast| %>
+          <tr>
+            <%= f.fields_for "yeast_#{yeast.id}", nil, {} do |builder| %>
+              
+              <td><%= builder.check_box :used %></td>
+
+              <td><strong><%= yeast.name %></strong></td>
+
+              <td><%= builder.text_field :quantity, :placeholder => "Quantity" %></td>
+              
+              <td><%= builder.text_field :unit_measure, :placeholder => "Unit measure" %></td>
+              
+              <td>
+                <%= builder.label :starter %>
+                <%= builder.check_box :starter %> 
+                <%= builder.label :starter, "Yes", class: 'starter' %>
+              </td>
+
+              <%= builder.hidden_field :yeast_id, :value => yeast.id  %>
+
+            <% end %>
+          </tr>
+          <% end %>
+          </table>
       </div>
     </dd>
 
     <dd>
       <a href="#specialty_options"><h2 data-magellan-destination="specialty_options">Specialty Items</h2></a>
       <div id="specialty_options">
-        
+        <table>
+        <% Specialty.all.each do |specialty| %>
+        <tr>
+          <%= f.fields_for "specialty_#{specialty.id}", nil, {} do |builder| %>
+
+            <td><%= builder.check_box :used %></td>
+
+            <td><strong><%= specialty.name %></strong></td>
+
+            <td><%= builder.text_field :quantity, :placeholder => "Quantity" %></td>
+            
+            <td><%= builder.text_field :unit_measure, :placeholder => "Unit measure" %></td>
+            
+            <td><%= builder.text_field :minutes_in_kettle, :placeholder => "Minutes in kettle" %></td>
+            
+            <td><%= builder.text_field :purpose, :placeholder => "Purpose" %></td>
+  
+            <%= builder.hidden_field :specialty_id, :value => specialty.id  %>
+          <% end %>
+        </tr>
+        <% end %>
+        </table>
       </div>
     </dd>
   <%= f.submit :id => "float_nav_right", :class => "button small" %>
