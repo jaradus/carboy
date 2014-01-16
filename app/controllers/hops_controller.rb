@@ -1,7 +1,7 @@
 class HopsController < ApplicationController
 
   def index
-    # Requests beers from the database
+    # Requests hops from the database
     @items = Hop.all
     raw_header = Hop.column_names()
     # Gets hop table headers, and removes database-specific information

@@ -12,6 +12,8 @@ Carboy::Application.routes.draw do
 
   delete '/fermentables/:id/delete' => 'fermentables#destroy', :as => :destroy_fermentable
 
+  delete '/hops/:id/delete' => 'hops#destroy', :as => :destroy_hop  
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

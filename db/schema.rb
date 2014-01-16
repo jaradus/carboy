@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140115164916) do
+ActiveRecord::Schema.define(:version => 20140116045056) do
 
   create_table "batches", :force => true do |t|
     t.integer "beer_id"
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(:version => 20140115164916) do
   create_table "batches_fermentables", :force => true do |t|
     t.integer  "batch_id"
     t.integer  "fermentable_id"
+    t.integer  "quantity"
+    t.text     "unit_measure"
+    t.integer  "minutes_in_boil"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "batches_hops", :force => true do |t|
+    t.integer  "batch_id"
+    t.integer  "hop_id"
     t.integer  "quantity"
     t.text     "unit_measure"
     t.integer  "minutes_in_boil"

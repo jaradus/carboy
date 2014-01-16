@@ -1,0 +1,84 @@
+<div class="row">
+  <div class="row">
+    <div class="large-12 columns"><h2><%= @hop.name %></h2></div> 
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Entry</h2>
+        <%= form_for @hop do |f| %>
+          <%= f.label :name %>
+          <%= f.text_area :name %>
+
+          <%= f.label :country_iso_code %>
+          <%= f.text_area :country_iso_code %>
+
+          <%= f.label :alpha_acid_min %>
+          <%= f.text_area :alpha_acid_min %>
+
+          <%= f.label :alpha_acid_max %>
+          <%= f.text_area :alpha_acid_max %>
+
+          <%= f.label :beta_acid_min %>
+          <%= f.text_area :beta_acid_min %>
+
+          <%= f.label :beta_acid_max %>
+          <%= f.text_area :beta_acid_max %>
+
+          <%= f.label :humulene_min %>
+          <%= f.text_area :humulene_min %>
+
+          <%= f.label :humulene_max %>
+          <%= f.text_area :humulene_max %>
+
+          <%= f.label :caryophyllene_min %>
+          <%= f.text_area :caryophyllene_min %>
+
+          <%= f.label :caryophyllene_max %>
+          <%= f.text_area :caryophyllene_max %>
+
+          <%= f.label :cohumulone_min %>
+          <%= f.text_area :cohumulone_min %>
+
+          <%= f.label :cohumulone_max %>
+          <%= f.text_area :cohumulone_max %>
+
+          <%= f.label :myrcene_min %>
+          <%= f.text_area :myrcene_min %>
+
+          <%= f.label :myrcene_max %>
+          <%= f.text_area :myrcene_max %>
+
+          <%= f.label :farnesene_min %>
+          <%= f.text_area :farnesene_min %>
+
+          <%= f.label :farnesene_max %>
+          <%= f.text_area :farnesene_max %>
+
+          <%= f.label :is_noble %>
+          <%= f.text_area :is_noble %>
+
+          <%= f.label :for_bittering %>
+          <%= f.text_area :for_bittering %>
+
+          <%= f.label :for_flavor %>
+          <%= f.text_area :for_flavor %>
+
+          <%= f.label :for_aroma %>
+          <%= f.text_area :for_aroma %>
+
+
+          <button class="button small success">Commit</button> 
+
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Hop</h5>
+          <p><%= button_to "Delete", destroy_hop_path(@hop), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+
+    </div>
+  </div>
+</div>

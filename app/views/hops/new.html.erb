@@ -1,0 +1,8 @@
+<div class="row">
+  <h1>Add Hop</h1>
+
+  <%= form_for @hop, url: "/hops" do |f| %>
+    <%= f.text_field :name, :placeholder => "Name" %>
+    <%= f.submit "Create Hop", class: "button tiny success" %>
+  <% end %>
+</div>
