@@ -37,7 +37,8 @@ class FermentablesController < ApplicationController
 
   def show
     @item = Fermentable.find(params[:id])
-    session[:fermentable] = @item
+    # This may cause a stack overflow
+    # session[:fermentable] = @item
   end
 
   def destroy

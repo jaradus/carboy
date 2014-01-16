@@ -30,6 +30,9 @@ class BeersController < ApplicationController
   end
 
   def update
+    p "*********************"
+    p params[:beer]
+    p "*********************"
     @beer = Beer.find(params[:id])
       @beer.update_attributes(params[:beer])
 
