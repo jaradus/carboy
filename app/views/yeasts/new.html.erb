@@ -1,0 +1,8 @@
+<div class="row">
+  <h1>Add Yeast</h1>
+
+  <%= form_for @yeast, url: "/yeasts" do |f| %>
+    <%= f.text_field :name, :placeholder => "Name" %>
+    <%= f.submit "Create Yeast", class: "button tiny success" %>
+  <% end %>
+</div>

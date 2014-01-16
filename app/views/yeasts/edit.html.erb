@@ -1,0 +1,63 @@
+<div class="row">
+  <div class="row">
+    <div class="large-12 columns"><h2><%= @yeast.name %></h2></div> 
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Entry</h2>
+        <%= form_for @yeast do |f| %>
+          <%= f.label :name %>
+          <%= f.text_area :name %>
+          
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+          
+          <%= f.label :yeast_type %>
+          <%= f.text_area :yeast_type %>
+          
+          <%= f.label :attenuation_min %>
+          <%= f.number_field :attenuation_min %>
+          
+          <%= f.label :attenuation_max %>
+          <%= f.number_field :attenuation_max %>
+          
+          <%= f.label :ferment_temp_min %>
+          <%= f.number_field :ferment_temp_min %>
+          
+          <%= f.label :ferment_temp_max %>
+          <%= f.number_field :ferment_temp_max %>
+          
+          <%= f.label :alcohol_tolerance_min %>
+          <%= f.number_field :alcohol_tolerance_min %>
+          
+          <%= f.label :alcohol_tolerance_max %>
+          <%= f.number_field :alcohol_tolerance_max %>
+          
+          <%= f.label :supplier %>
+          <%= f.text_area :supplier %>
+          
+          <%= f.label :product_id %>
+          <%= f.text_area :product_id %>
+          
+          <%= f.label :yeast_format %>
+          <%= f.text_area :yeast_format %>
+          
+          <%= f.label :category %>
+          <%= f.text_area :category %>
+          
+
+          <button class="button small success">Commit</button> 
+
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Yeast</h5>
+          <p><%= button_to "Delete", destroy_yeast_path(@yeast), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+
+    </div>
+  </div>
+</div>
