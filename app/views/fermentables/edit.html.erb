@@ -1,0 +1,68 @@
+<div class="row">
+  <div class="row">
+    <div class="large-12 columns"><h2><%= @fermentable.name %></h2></div> 
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Entry</h2>
+        <%= form_for @fermentable do |f| %>
+          <%= f.label :name %>
+          <%= f.text_area :name %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+
+          <%= f.label :country_iso_code %>
+          <%= f.text_area :country_iso_code %>
+
+          <%= f.label :srm_id %>
+          <%= f.text_area :srm_id %>
+
+          <%= f.label :srm_precise %>
+          <%= f.text_area :srm_precise %>
+
+          <%= f.label :moisture_content %>
+          <%= f.text_area :moisture_content %>
+
+          <%= f.label :diastatic_power %>
+          <%= f.text_area :diastatic_power %>
+
+          <%= f.label :potential_yield %>
+          <%= f.text_area :potential_yield %>
+
+          <%= f.label :dry_yield %>
+          <%= f.text_area :dry_yield %>
+
+          <%= f.label :protein %>
+          <%= f.text_area :protein %>
+
+          <%= f.label :soluble_nitrogen_ratio %>
+          <%= f.text_area :soluble_nitrogen_ratio %>
+
+          <%= f.label :max_in_batch %>
+          <%= f.text_area :max_in_batch %>
+
+          <%= f.label :requires_mashing %>
+          <%= f.text_area :requires_mashing %>
+
+          <%= f.label :category %>
+          <%= f.text_area :category %>
+
+          <%= f.label :characteristics %>
+          <%= f.text_area :characteristics %>
+
+          <button class="button small success">Change Fermentable</button> 
+
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Fermentable</h5>
+          <p><%= button_to "Delete", destroy_fermentable_path(@fermentable), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+
+    </div>
+  </div>
+</div>

@@ -37,8 +37,7 @@ class FermentablesController < ApplicationController
 
   def show
     @item = Fermentable.find(params[:id])
-    # This may cause a stack overflow
-    # session[:fermentable] = @item
+    @desc = ["The unique id of the fermentable.","Corresponding API id","The name of the fermentable.","The description of the fermentable.","ISO country name.","","","The average moisture content of the grain, expressed as a percent of weight.","A measure of how much starch converting enzyme is in the grain. A higher number (common in pale malts) indicates the presence of more enzymes for starch conversion. Expressed as a percentage.","Equivalent to the potential field, but expressed as a percentage of total weight converted.","The potential yield of the ingredient, expressed in specific gravity units.","The percentage of the fermentable that is protein.","The ratio of soluble nitrogen to total nitrogen. Expressed as a percentage. The soluble nitrogen ratio is an important indicator of malt modification. The higher the number, the more highly modified the malt.","The maximum recommended percentage of the mash makeup that this fermentable can be.","Whether or not the fermentable should be mashed.","","The list of characteristics / qualities of the fermentable","The ID of the corresponding SRM object. See the srm field for more information like hex color.","The precise SRM value of the fermentable. Whereas the srmId is intended for things like providing the color, the srmPrecise value is ideal for things like calculations in recipes. Expressed as a percentage."]
   end
 
   def destroy

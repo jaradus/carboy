@@ -2,7 +2,7 @@
   <h1>Add Beer</h1>
 
   <%= form_for @beer, url: "/beers" do |f| %>
-    <%= f.text_field :name %>
-    <%= f.submit "Create Beer" %>
+    <%= f.text_field :name, :placeholder => "Name" %>
+    <%= f.submit "Create Beer", class: "button tiny success" %>
   <% end %>
 </div>
