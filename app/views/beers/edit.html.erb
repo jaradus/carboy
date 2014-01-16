@@ -5,65 +5,52 @@
 
   <hr>
 
-<!-- Interpage Nav Bar Start -->
-
-  <div data-magellan-expedition="fixed">
-    <dl class="sub-nav">
-      <dd data-magellan-arrival="fermentable_options"><a href="#fermentable_options">Fermentables</a></dd>
-      <dd data-magellan-arrival="hop_options"><a href="#hop_options">Hops</a></dd>
-      <dd data-magellan-arrival="yeast_options"><a href="#yeast_options">Yeast</a></dd>
-      <dd data-magellan-arrival="specialty_options"><a href="#specialty_options">Specialty</a></dd>
-    </dl>
-  </div>
-
-<!-- Interpage Nav Bar End -->
-
-
-
-
   <div class="row">
-    <%= form_for @beer do |f| %>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Entry</h2>
+        <%= form_for @beer do |f| %>
+          <%= f.label :name %>
+          <%= f.text_area :name %>
 
-      <%= f.label :beer_style %>
-      <%= f.text_field :beer_style %>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
 
-      <%= f.label :regional_style %>
-      <%= f.collection_select(:regional_style_id, Regionalstyle.all, :id, :name, prompt: true) %> 
+          <%= f.label :beer_style %>
+          <%= f.text_field :beer_style %>
 
-      <%= f.label :color %>
-      <%= f.text_field :color %>  
+          <%= f.label :regionalstyle %>
+          <%= f.collection_select(:regional_style_id, Regionalstyle.all, :id, :name, prompt: true) %> 
 
-      <%= f.label :original_gravity %>
-      <%= f.number_field :original_gravity %>  
+          <%= f.label :country_style %>
+          <%= f.text_field :country_style %>  
 
-      <%= f.label :time_to_make %>
-      <%= f.number_field :time_to_make %>
+          <%= f.label :color %>
+          <%= f.text_field :color %>  
 
-      <%= f.label :time_unit %>
-      <%= f.select(:time_unit, ["Weeks", "Months", "Years"]) %>
+          <%= f.label :original_gravity %>
+          <%= f.number_field :original_gravity %> 
 
-      <%= f.label :image_url %>
-      <%= f.text_field :image_url %>  
+          <%= f.label :time_to_make %>
+          <%= f.number_field :time_to_make %>
 
-    <% end %>
+          <%= f.label :time_unit %>
+          <%= f.select(:time_unit, ["Weeks", "Months", "Years"]) %>
+
+          <%= f.label :image_url %>
+          <%= f.text_field :image_url %>
+
+          <%= f.label :recipe_link %>
+          <%= f.text_area :recipe_link %>
+
+          <button class="button small success">Change Beer</button> 
+
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Beer</h5>
+          <p><%= button_to "Delete", destroy_beer_path(@beer), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+
+    </div>
   </div>
-
-  <div id="fermentable_options">
-    <h2 data-magellan-destination="fermentable_options">Fermentables</h2>
-  </div>
-
-  <div id="hop_options">
-    <h2 data-magellan-destination="hop_options">Hops</h2>
-  </div>
-
-  <div id="yeast_options">
-    <h2 data-magellan-destination="yeast_options">Yeast</h2>
-  </div>
-
-  <div id="specialty_options">
-    <h2 data-magellan-destination="specialty_options">Specialty</h2>
-  </div>
-
 </div>

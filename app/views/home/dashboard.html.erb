@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="large-12 columns"><h1><%= current_user.name %></h1><% if current_user.brewery_name? %><h4><%= current_user.brewery_name %>, since <%= current_user.founding_date %></h4><% end %></div>
+  <hr>
+</div>
+
+<!-- Current Batches -->
+<!-- TODO: set this to check if any batch is current fermenting -->
+<% if current_user %>
+<div class="row">
+  <h3>Batches in Production</h3>
+  <hr>
+
+  <div class="progress small-#">
+  <!-- TODO: compare current date against brew date and lengths. See status -->
+    <%= @batch %><span class="meter" style="width: 50%"></span>
+  </div>
+
+</div>
+<% end %>
+<!-- End Current Batches -->

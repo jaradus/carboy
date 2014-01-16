@@ -1,7 +1,6 @@
 <div class="row">
   <div class="row">
     <div class="large-12 columns"><h2><%= @beer.name %></h2></div> 
-  </div>
 
   <hr>
 
@@ -9,6 +8,7 @@
 
   <div data-magellan-expedition="fixed">
     <dl class="sub-nav">
+      <dd data-magellan-arrival="beer_options"><a href="#beer_options">Beers</a></dd>
       <dd data-magellan-arrival="fermentable_options"><a href="#fermentable_options">Fermentables</a></dd>
       <dd data-magellan-arrival="hop_options"><a href="#hop_options">Hops</a></dd>
       <dd data-magellan-arrival="yeast_options"><a href="#yeast_options">Yeast</a></dd>
@@ -16,54 +16,62 @@
     </dl>
   </div>
 
+</div>
+
 <!-- Interpage Nav Bar End -->
 
 
 
+  <dl class="accordion" data-accordion>
+    <dd>
+      <a href="#beer_options"><h2 data-magellan-destination="beer_options">Technicals</h2></a>
+      <div class="row content active" id="beer_options">
+        <%= form_for @beer do |f| %>
+          <%= f.label :description %>
+          <%= f.text_area :description %>
 
-  <div class="row">
-    <%= form_for @beer do |f| %>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
+          <%= f.label :beer_style %>
+          <%= f.text_field :beer_style %>
 
-      <%= f.label :beer_style %>
-      <%= f.text_field :beer_style %>
+          <%= f.label :regional_style %>
+          <%= f.collection_select(:regional_style_id, Regionalstyle.all, :id, :name, prompt: true) %> 
 
-      <%= f.label :regional_style %>
-      <%= f.collection_select(:regional_style_id, Regionalstyle.all, :id, :name, prompt: true) %> 
+          <%= f.label :color %>
+          <%= f.text_field :color %>  
 
-      <%= f.label :color %>
-      <%= f.text_field :color %>  
+          <%= f.label :original_gravity %>
+          <%= f.number_field :original_gravity %>  
 
-      <%= f.label :original_gravity %>
-      <%= f.number_field :original_gravity %>  
+          <%= f.label :time_to_make %>
+          <%= f.number_field :time_to_make %>
 
-      <%= f.label :time_to_make %>
-      <%= f.number_field :time_to_make %>
+          <%= f.label :time_unit %>
+          <%= f.select(:time_unit, ["Weeks", "Months", "Years"]) %>
 
-      <%= f.label :time_unit %>
-      <%= f.select(:time_unit, ["Weeks", "Months", "Years"]) %>
+          <%= f.label :image_url %>
+          <%= f.text_field :image_url %>  
 
-      <%= f.label :image_url %>
-      <%= f.text_field :image_url %>  
+        <% end %>
+      </div>
+    </dd>
 
-    <% end %>
-  </div>
+    <dd>
+      <a href="#fermentable_options"><h2 data-magellan-destination="fermentable_options">Fermentables</h2></a>
+      <div id="fermentable_options">
+        
+      </div>
 
-  <div id="fermentable_options">
-    <h2 data-magellan-destination="fermentable_options">Fermentables</h2>
-  </div>
+    <div id="hop_options">
+      <h2 data-magellan-destination="hop_options">Hops</h2>
+    </div>
 
-  <div id="hop_options">
-    <h2 data-magellan-destination="hop_options">Hops</h2>
-  </div>
+    <div id="yeast_options">
+      <h2 data-magellan-destination="yeast_options">Yeast</h2>
+    </div>
 
-  <div id="yeast_options">
-    <h2 data-magellan-destination="yeast_options">Yeast</h2>
-  </div>
+    <div id="specialty_options">
+      <h2 data-magellan-destination="specialty_options">Specialty</h2>
+    </div>
 
-  <div id="specialty_options">
-    <h2 data-magellan-destination="specialty_options">Specialty</h2>
-  </div>
-
+  </dl>
 </div>

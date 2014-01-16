@@ -22,24 +22,42 @@
 
   <section class="top-bar-section">
     <!-- Left Nav Section -->
+    <% if user_signed_in? %>
+      <ul class="left">
+        <li><a href=<%= beers_path %>>Beers</a></li>
+        <li><a href=<%= batches_path %>>Batches</a></li>
+        <li class="has-dropdown">
+          <a href="#">Ingredients</a>
+          <ul class="dropdown">
+              <li><a href=<%= fermentables_path %>>Fermentables</a></li>
+              <li><a href=<%= hops_path %>>Hops</a></li>
+              <li><a href=<%= yeasts_path %>>Yeast</a></li>
+              <li><a href=<%= specialties_path %>>Specialty Items</a></li>
+          </ul>
+        </li>
+      </ul>
+    
+    <!-- End Left Nav Section -->
+
+    <!-- Right Nav Section -->
     <ul class="right">
-      <li><a href=<%= beers_path %>>Beers</a></li>
-      <li><a href=<%= batches_path %>>Batches</a></li>
       <li class="has-dropdown">
-        <a href="#">Ingredients</a>
-        <ul class="dropdown">
-            <li><a href=<%= fermentables_path %>>Fermentables</a></li>
-            <li><a href=<%= hops_path %>>Hops</a></li>
-            <li><a href=<%= yeasts_path %>>Yeast</a></li>
-            <li><a href=<%= specialties_path %>>Specialty Items</a></li>
-        </ul>
+          <a href="#">Account Settings</a>
+          <ul class="dropdown">
+            <li><%= link_to('Edit Account', edit_user_registration_path, method: :get) %></li>
+            <li><%= link_to('Sign out', destroy_user_session_path, method: :delete) %></li>
+          </ul>
       </li>
     </ul>
+    <!-- End Right Nav Section -->
+    <% end %>
   </section>
 </nav>
 
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div class="row">
+    <p class="notice <% if notice %>success label<%end%>"><%= notice %></p>
+    <p class="alert <% if alert %>success label<%end%>"><%= alert %></p>
+  </div>
 
     <%= yield %>
     <%= javascript_include_tag "application" %>

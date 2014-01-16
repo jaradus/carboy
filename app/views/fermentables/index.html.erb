@@ -1,0 +1,23 @@
+<div class="row">
+  <h1>Fermentables</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <% @items_header.each do |header| %>
+          <th><%= header.humanize %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+          <tr>
+              <td><a href="<%= fermentable_path(item) %>"><%= item.name %></a></td>
+              <td><%= item.country_iso_code %></td>
+              <td><%= item.category %></td>
+              <td><%= item.characteristics %></td>
+          </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

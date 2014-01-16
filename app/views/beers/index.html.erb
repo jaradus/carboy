@@ -1,27 +1,33 @@
-<h1>Beers</h1>
+<div class="row">
+  <h1>Beers</h1>
 
-<table>
-  <thead>
-    <tr>
-      <% @items_header.each do |header| %>
-        <th><%= header.humanize %></th>
+  <table>
+    <thead>
+      <tr>
+        <% @items_header.each do |header| %>
+          <th><%= header.humanize %></th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @items.each do |item| %>
+          <tr>
+              <td><a href="<%= beer_path(item) %>"><%= item.name %></a></td>
+              <% if item.regionalstyle %>
+                <td><%= item.regionalstyle.name %></td>
+              <% else %>
+                <td></td>
+              <% end %>
+              <td><%= item.beer_style %></td>
+              <td><%= item.color %></td>
+              <td><%= item.original_gravity %></td>
+              <td><%= item.time_to_make %></td>
+              <td><%= item.time_unit %></td>
+              <td><a class="th" href="<%= item.image_url %>"><img src="<%= item.image_url %>"/></a></td>
+              <td><%= item.country_style %></td>
+              <td><a href="<%= item.recipe_link %>">Recipe</a></td>
+          </tr>
       <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
-        <tr>
-            <td><a href="<%= beer_path(item) %>"><%= item.name %></a></td>
-            <td><%= item.regional_style_id %></td>
-            <td><%= item.beer_style %></td>
-            <td><%= item.color %></td>
-            <td><%= item.original_gravity %></td>
-            <td><%= item.time_to_make %></td>
-            <td><%= item.time_unit %></td>
-            <td><a class="th" href="<%= item.image_url %>"><img src="<%= item.image_url %>"/></a></td>
-            <td><%= item.country_style %></td>
-            <td><a href="<%= item.recipe_link %>">Recipe</a></td>
-        </tr>
-    <% end %>
-  </tbody>
-</table>
+    </tbody>
+  </table>
+</div>
