@@ -1,6 +1,6 @@
 <div class="row">
   <div class="row">
-    <div class="large-12 columns"><h2><%= @beer.name %></h2></div> 
+    <div class="large-12 columns"><h2><%= @batch.name %></h2></div> 
 
   <hr>
 
@@ -24,54 +24,101 @@
 
   <dl class="accordion" data-accordion>
     <dd>
-      <a href="#beer_options"><h2 data-magellan-destination="beer_options">Technicals</h2></a>
-      <div class="row content active" id="beer_options">
-        <%= form_for @beer do |f| %>
-          <%= f.label :description %>
-          <%= f.text_area :description %>
+      <a href="#beer_options"><h2 data-magellan-destination="beer_options">Beer Information</h2></a>
+      <div class="content active" id="beer_options">
+        <h3><%= @batch.beer.name %></h3>
+        <strong>Description</strong>
+        <p><%= @batch.beer.description %></p>
 
-          <%= f.label :beer_style %>
-          <%= f.text_field :beer_style %>
+        <table>
+          <thead>
+            <tr>
+              <th>Style</th>
+              <th>Color</th>
+              <th>Typical O.G.</th>
+              <th>Time to Make</th>
+              <% if @batch.beer.regionalstyle %>
+                <th>Regional Style</th>
+              <% else %>
+                <th>Country Style</th>
+              <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%= @batch.beer.beer_style %></td>
+              <td><%= @batch.beer.color %></td>
+              <td><%= @batch.beer.original_gravity %></td>
+              <td><%= @batch.beer.time_to_make %> <%= @batch.beer.time_unit %></td>
+              <% if @batch.beer.regionalstyle %>
+                <td><%= @batch.beer.regionalstyle %></td>
+              <% else %>
+                <td><%= @batch.beer.country_style %></td>
+              <% end %>
+            </tr>
+          </tbody>
+        </table>
 
-          <%= f.label :regional_style %>
-          <%= f.collection_select(:regional_style_id, Regionalstyle.all, :id, :name, prompt: true) %> 
-
-          <%= f.label :color %>
-          <%= f.text_field :color %>  
-
-          <%= f.label :original_gravity %>
-          <%= f.number_field :original_gravity %>  
-
-          <%= f.label :time_to_make %>
-          <%= f.number_field :time_to_make %>
-
-          <%= f.label :time_unit %>
-          <%= f.select(:time_unit, ["Weeks", "Months", "Years"]) %>
-
-          <%= f.label :image_url %>
-          <%= f.text_field :image_url %>  
-
-        <% end %>
+        <a href="<%= @batch.beer.recipe_link %>" class="button tiny">Recipe</a>
       </div>
     </dd>
 
+<!-- Batch Edit Form Start -->
+<%= form_for @batch  do |f| %>
     <dd>
       <a href="#fermentable_options"><h2 data-magellan-destination="fermentable_options">Fermentables</h2></a>
       <div id="fermentable_options">
         
       </div>
+    </dd>
 
-    <div id="hop_options">
-      <h2 data-magellan-destination="hop_options">Hops</h2>
-    </div>
+    <dd>
+      <a href="#hop_options"><h2 data-magellan-destination="hop_options">Hops</h2></a>
+      <div id="hop_options">
+        <table>
+        <% Hop.all.each do |hop| %>
+        <tr>
+          <%= f.fields_for "hop_#{hop.id}", nil, {} do |builder| %>
 
-    <div id="yeast_options">
-      <h2 data-magellan-destination="yeast_options">Yeast</h2>
-    </div>
+            <td><%= builder.check_box :used %></td>
 
-    <div id="specialty_options">
-      <h2 data-magellan-destination="specialty_options">Specialty</h2>
-    </div>
+            <td><strong><%= hop.name %></strong></td>
+
+            <td><%= builder.text_field :quantity, :placeholder => "Quantity" %></td>
+            
+            <td><%= builder.text_field :unit_measure, :placeholder => "Unit measure" %></td>
+            
+            <td><%= builder.text_field :minutes_in_boil, :placeholder => "Minutes in boil" %></td>
+            
+            <td><%= builder.text_field :alpha_acid, :placeholder => "Alpha acid %" %></td>
+            
+            <td><%= builder.text_field :beta_acid, :placeholder => "Beta acid %" %></td>
+  
+            <%= builder.hidden_field :hop_id, :value => hop.id  %>
+          <% end %>
+        </tr>
+        <% end %>
+        </table>
+
+      </div>
+    </dd>
+
+    <dd>
+      <a href="#yeast_options"><h2 data-magellan-destination="yeast_options">Yeast</h2></a>
+      <div id="yeast_options">
+        
+      </div>
+    </dd>
+
+    <dd>
+      <a href="#specialty_options"><h2 data-magellan-destination="specialty_options">Specialty Items</h2></a>
+      <div id="specialty_options">
+        
+      </div>
+    </dd>
+  <%= f.submit :id => "float_nav_right", :class => "button small" %>
+<% end %>
+<!-- Batch Edit Form End -->
 
   </dl>
 </div>

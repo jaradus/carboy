@@ -44,6 +44,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.integer  "quantity"
     t.text     "unit_measure"
     t.integer  "minutes_in_boil"
+    t.float    "alpha_acid"
+    t.float    "beta_acid"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

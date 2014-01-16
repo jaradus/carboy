@@ -24,6 +24,9 @@ class Batch < ActiveRecord::Base
   belongs_to :beer
   belongs_to :user
 
-  accepts_nested_attributes_for :fermentables, :hops, :yeasts, :specialties
+  accepts_nested_attributes_for :fermentables, :reject_if => lambda { |a| a[:content].blank? }
+  accepts_nested_attributes_for :hops, :reject_if => lambda { |a| a[:content].blank? }
+  accepts_nested_attributes_for :yeasts, :reject_if => lambda { |a| a[:content].blank? }
+  accepts_nested_attributes_for :specialties, :reject_if => lambda { |a| a[:content].blank? }
 
 end

@@ -3,7 +3,7 @@ class CreateBatchesHopsTable < ActiveRecord::Migration
     create_table :batches_hops do |t|
       t.integer    :batch_id
       t.integer    :hop_id
-      t.integer    :quantity
+      t.float    :quantity
       t.text       :unit_measure
       t.integer    :minutes_in_boil
       t.float      :alpha_acid

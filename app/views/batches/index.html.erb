@@ -1,0 +1,27 @@
+<div class="row">
+    <h1>Batches</h1><%= button_to "Brew Batch", new_batch_path, :method => :get, class: "button tiny" %>
+
+    <table>
+      <thead>
+        <tr>
+          <% @items_header.each do |header| %>
+            <th><%= header.humanize %></th>
+          <% end %>
+            <th>Delete?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><%= item.beer.name %></td>
+                <td><a href="<%= batch_path(item) %>"><%= item.name %></a></td>
+                <td><%= item.rating %></td>
+                <td><%= item.brew_date %></td>
+                <td><%= item.secondary_date %></td>
+                <td><%= item.bottling_date %></td>
+                <td><%= button_to "Delete", destroy_batch_path(item), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert radius" %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

@@ -18,6 +18,8 @@ Carboy::Application.routes.draw do
 
   delete '/specialties/:id/delete' => 'specialties#destroy', :as => :destroy_specialty
 
+  delete '/batches/:id/delete' => 'batches#destroy', :as => :destroy_batch
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -1,0 +1,13 @@
+<div class="row">
+  <h1>Brew Batch</h1>
+
+  <%= form_for @batch, url: "/batches" do |f| %>
+
+    <%= f.label :beer %>
+    <%= f.collection_select(:beer_id, Beer.all, :id, :name, prompt: true) %>
+
+    <%= f.text_field :name, :placeholder => "Title" %>
+
+    <%= f.submit "Brew", class: "button tiny" %>
+  <% end %>
+</div>

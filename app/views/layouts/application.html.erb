@@ -7,11 +7,11 @@
     <title><%= content_for?(:title) ? yield(:title) : "foundation-rails" %></title>
 
     <%= stylesheet_link_tag    "application", "style" %>
-    <%= javascript_include_tag "vendor/modernizr", "js/jquery.js", "js/foundation/foundation.js", "js/foundation/foundation.magellan.js" %>
+    <%= javascript_include_tag :defaults, "vendor/modernizr", "js/jquery.js", "js/foundation/foundation.js", "js/foundation/foundation.magellan.js" %>
     <%= csrf_meta_tags %>
   </head>
 
-  <body>
+  <body class="container">
 
 <nav class="top-bar" data-topbar>
   <ul class="title-area">
@@ -59,9 +59,10 @@
     <p class="alert <% if alert %>success label<%end%>"><%= alert %></p>
   </div>
 
-<div class="container">
+
     <%= yield %>
-</div>
+
+
     <%= javascript_include_tag "application" %>
   </body>
 </html>
