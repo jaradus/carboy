@@ -1,37 +1,25 @@
-<h1>Hops</h1>
+<div class="row">
+    <h1>Hops</h1>
 
-<table>
-  <thead>
-    <tr>
-      <% @items_header.each do |header| %>
-        <th><%= header.humanize %></th>
-      <% end %>
-    </tr>
-  </thead>
-  <tbody>
-    <% @items.each do |item| %>
+    <table>
+      <thead>
         <tr>
-            <td><a href="<%= hop_path(item) %>"><%= item.name %></a></td>
-            <td><%= item.country_iso_code %></td>
-            <td><%= item.alpha_acid_min %></td>
-            <td><%= item.alpha_acid_max %></td>
-            <td><%= item.beta_acid_min %></td>
-            <td><%= item.beta_acid_max %></td>
-            <td><%= item.humulene_min %></td>
-            <td><%= item.humulene_max %></td>
-            <td><%= item.caryophyllene_min %></td>
-            <td><%= item.caryophyllene_max %></td>
-            <td><%= item.cohumulone_min %></td>
-            <td><%= item.cohumulone_max %></td>
-            <td><%= item.myrcene_min %></td>
-            <td><%= item.myrcene_max %></td>
-            <td><%= item.farnesene_min %></td>
-            <td><%= item.farnesene_max %></td>
-            <td><%= item.is_noble %></td>
-            <td><%= item.for_bittering %></td>
-            <td><%= item.for_flavor %></td>
-            <td><%= item.for_aroma %></td>
+          <% @items_header.each do |header| %>
+            <th><%= header.humanize %></th>
+          <% end %>
         </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><a href="<%= hop_path(item) %>"><%= item.name %></a></td>
+                <td><%= item.country_iso_code %></td>
+                <td><%= item.alpha_acid_min %></td>
+                <td><%= item.alpha_acid_max %></td>
+                <td><%= item.beta_acid_min %></td>
+                <td><%= item.beta_acid_max %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
