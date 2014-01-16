@@ -1,0 +1,8 @@
+<div class="row">
+  <h1>Add Specialty</h1>
+
+  <%= form_for @specialty, url: "/specialties" do |f| %>
+    <%= f.text_field :name, :placeholder => "Name" %>
+    <%= f.submit "Create Specialty", class: "button tiny success" %>
+  <% end %>
+</div>

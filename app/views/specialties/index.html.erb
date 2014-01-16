@@ -1,0 +1,21 @@
+<div class="row">
+    <h1>Specialty Items</h1><%= button_to "Add Specialty", new_specialty_path, :method => :get, class: "button tiny success" %>
+
+    <table>
+      <thead>
+        <tr>
+          <% @items_header.each do |header| %>
+            <th><%= header.humanize %></th>
+          <% end %>
+        </tr>
+      </thead>
+      <tbody>
+        <% @items.each do |item| %>
+            <tr>
+                <td><a href="<%= specialty_path(item) %>"><%= item.name %></a></td>
+                <td><%= item.type %></td>
+            </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>

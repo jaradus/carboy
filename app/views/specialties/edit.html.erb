@@ -1,0 +1,32 @@
+<div class="row">
+  <div class="row">
+    <div class="large-12 columns"><h2><%= @specialty.name %></h2></div> 
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Entry</h2>
+        <%= form_for @specialty do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :type %>
+          <%= f.text_field :type %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+
+          <button class="button small success">Commit</button> 
+
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Specialty</h5>
+          <p><%= button_to "Delete", destroy_specialty_path(@specialty), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+
+    </div>
+  </div>
+</div>

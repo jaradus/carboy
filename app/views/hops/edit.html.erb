@@ -10,64 +10,68 @@
     <h2 class="grey_background">Entry</h2>
         <%= form_for @hop do |f| %>
           <%= f.label :name %>
-          <%= f.text_area :name %>
+          <%= f.text_field :name %>
 
           <%= f.label :country_iso_code %>
-          <%= f.text_area :country_iso_code %>
+          <%= f.text_field :country_iso_code %>
 
           <%= f.label :alpha_acid_min %>
-          <%= f.text_area :alpha_acid_min %>
+          <%= f.text_field :alpha_acid_min %>
 
           <%= f.label :alpha_acid_max %>
-          <%= f.text_area :alpha_acid_max %>
+          <%= f.text_field :alpha_acid_max %>
 
           <%= f.label :beta_acid_min %>
-          <%= f.text_area :beta_acid_min %>
+          <%= f.text_field :beta_acid_min %>
 
           <%= f.label :beta_acid_max %>
-          <%= f.text_area :beta_acid_max %>
+          <%= f.text_field :beta_acid_max %>
 
           <%= f.label :humulene_min %>
-          <%= f.text_area :humulene_min %>
+          <%= f.text_field :humulene_min %>
 
           <%= f.label :humulene_max %>
-          <%= f.text_area :humulene_max %>
+          <%= f.text_field :humulene_max %>
 
           <%= f.label :caryophyllene_min %>
-          <%= f.text_area :caryophyllene_min %>
+          <%= f.text_field :caryophyllene_min %>
 
           <%= f.label :caryophyllene_max %>
-          <%= f.text_area :caryophyllene_max %>
+          <%= f.text_field :caryophyllene_max %>
 
           <%= f.label :cohumulone_min %>
-          <%= f.text_area :cohumulone_min %>
+          <%= f.text_field :cohumulone_min %>
 
           <%= f.label :cohumulone_max %>
-          <%= f.text_area :cohumulone_max %>
+          <%= f.text_field :cohumulone_max %>
 
           <%= f.label :myrcene_min %>
-          <%= f.text_area :myrcene_min %>
+          <%= f.text_field :myrcene_min %>
 
           <%= f.label :myrcene_max %>
-          <%= f.text_area :myrcene_max %>
+          <%= f.text_field :myrcene_max %>
 
           <%= f.label :farnesene_min %>
-          <%= f.text_area :farnesene_min %>
+          <%= f.text_field :farnesene_min %>
 
           <%= f.label :farnesene_max %>
-          <%= f.text_area :farnesene_max %>
+          <%= f.text_field :farnesene_max %>
 
           <%= f.label :is_noble %>
-          <%= f.text_area :is_noble %>
+          <%= f.check_box :is_noble%> 
+          <%= f.label :is_noble, "Yes", class: 'is_noble' %>
 
           <%= f.label :for_bittering %>
-          <%= f.text_area :for_bittering %>
+          <%= f.check_box :for_bittering%> 
+          <%= f.label :for_bittering, "Yes", class: 'for_bittering' %>
 
           <%= f.label :for_flavor %>
-          <%= f.text_area :for_flavor %>
+          <%= f.check_box :for_flavor%> 
+          <%= f.label :for_flavor, "Yes", class: 'for_flavor' %>
 
           <%= f.label :for_aroma %>
-          <%= f.text_area :for_aroma %>
+          <%= f.check_box :for_aroma%> 
+          <%= f.label :for_aroma, "Yes", class: 'for_aroma' %></br>
 
 
           <button class="button small success">Commit</button> 

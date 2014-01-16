@@ -59,7 +59,9 @@
     <p class="alert <% if alert %>success label<%end%>"><%= alert %></p>
   </div>
 
+<div class="container">
     <%= yield %>
+</div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
