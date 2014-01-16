@@ -29,4 +29,22 @@ class BeersController < ApplicationController
     @item = Beer.find(params[:id])
   end
 
+  def update
+    @beer = Beer.find(params[:id])
+      @beer.update_attributes(params[:beer])
+
+    if @beer.update_attributes(params[:beer])
+      redirect_to @beer, notice: 'Beer was successfully updated.' 
+    else
+      render "edit"
+    end
+  end
+
+  def destroy
+    @beer = Beer.find(params[:id])
+    @beer.destroy
+
+    redirect_to beers_path
+  end
+
 end
