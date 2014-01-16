@@ -15,7 +15,7 @@ Carboy::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
-  config.assets.compile = true
+  config.assets.compile = false
 
   # Generate digests for assets URLs
   config.assets.digest = true
@@ -67,4 +67,6 @@ Carboy::Application.configure do
 
   # For Heroku/Devise
   config.action_mailer.default_url_options = { :host => 'http://carboy.herokuapp.com/' }
+
+  config.assets.precompile += %w( app/style.css )
 end
