@@ -3,7 +3,7 @@ class CreateSpecialtiesTable < ActiveRecord::Migration
     create_table :specialties do |t|
       t.text    :name
       t.text    :description
-      t.text    :type
+      t.text    :classification
 
       t.timestamps
     end
