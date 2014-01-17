@@ -15,7 +15,6 @@
     <tr>
       <th>Batch</th>
       <th>Brew Date</th>
-      <th>Progress</th>
       <th>Bottling Date</th>
     </tr>
   </thead>
@@ -28,16 +27,10 @@
   </tr>
   <tr>
     <td>
-      <%= batch.name %>
+      <a href=<%= batch_path(batch.id) %>><%= batch.name %></a>
     </td>
     <td>
       <%= batch.brew_date %>
-    </td>
-    <td width="600px">
-        <div class="progress small-#">
-        <!-- TODO: compare current date against brew date and lengths. See status -->
-          <span class="meter" style="width: <%= (((batch.bottling_date.year-batch.brew_date.year)*356)+((batch.bottling_date.month-batch.brew_date.month)*30)+((batch.bottling_date.day-batch.brew_date.day))) %>%"></span>
-        </div>
     </td>
     <td>
       <%= batch.bottling_date %>
