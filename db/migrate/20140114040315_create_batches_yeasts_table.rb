@@ -9,5 +9,7 @@ class CreateBatchesYeastsTable < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :batches_yeasts, [:batch_id, :yeast_id]
   end
 end

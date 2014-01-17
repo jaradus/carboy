@@ -9,5 +9,7 @@ class CreateBatchesFermentablesTable < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :batches_fermentables, [:batch_id, :fermentable_id]
   end
 end

@@ -11,5 +11,6 @@ class CreateReviewsTable < ActiveRecord::Migration
       t.timestamps
     end
 
+    add_index :reviews, [:batch_id, :id]
   end
 end

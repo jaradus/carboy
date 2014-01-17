@@ -11,5 +11,7 @@ class CreateBatchesHopsTable < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :batches_hops, [:batch_id, :hop_id]
   end
 end

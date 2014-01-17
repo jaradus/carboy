@@ -8,6 +8,8 @@ Carboy::Application.routes.draw do
 
   get 'user/:id/dashboard' => 'home#dashboard', :as => :dashboard
 
+  get '/batches/:id/edit_technicals' => 'batches#technicals', :as => :edit_technicals_batch
+
   delete '/beers/:id/delete' => 'beers#destroy', :as => :destroy_beer
 
   delete '/fermentables/:id/delete' => 'fermentables#destroy', :as => :destroy_fermentable

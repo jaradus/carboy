@@ -7,6 +7,7 @@ gem 'httparty'
 gem 'devise'
 gem 'nokogiri'
 gem 'foundation-rails'
+gem 'will_paginate', '~> 3.0'
 
 
 # Gems used only for assets and not required

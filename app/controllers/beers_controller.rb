@@ -30,11 +30,14 @@ class BeersController < ApplicationController
   end
 
   def update
-    p "*********************"
-    p params[:beer]
-    p "*********************"
     @beer = Beer.find(params[:id])
       @beer.update_attributes(params[:beer])
+
+    if @regional_style = @beer.beerstyle
+      @regional_style.update_attributes(beer_id: params[:id], regionalstyle_id: params["beer"]["regional_style_id"])
+    else
+      Beerstyle.create(beer_id: params[:id], regionalstyle_id: params["beer"]["regional_style_id"])
+    end
 
     if @beer.update_attributes(params[:beer])
       redirect_to @beer, notice: 'Beer was successfully updated.' 

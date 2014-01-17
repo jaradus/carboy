@@ -18,9 +18,9 @@
           </thead>
           <tbody>
             <tr>
-              <% if @regionalstyle %>
+              <% if @item.regionalstyle %>
                 <td class="header">Regional Style</td>
-                <td><%= @regionalstyle.name %></td>
+                <td><%= @item.regionalstyle.name %></td>
               <% else %>
                 <td class="header">Country Style</td>
                 <td><%= @item.country_style %></td>

@@ -10,5 +10,7 @@ class CreateBatchesSpecialtiesTable < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :batches_specialties, [:batch_id, :specialty_id]
   end
 end

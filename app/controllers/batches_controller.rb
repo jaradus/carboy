@@ -23,7 +23,7 @@ class BatchesController < ApplicationController
     @batch = Batch.create(params[:batch])
 
       if @batch.save
-        redirect_to edit_batch_path(@batch)
+        redirect_to batch_path(@batch)
       end
   end
 
@@ -37,7 +37,12 @@ class BatchesController < ApplicationController
   end
 
   def update
-    # params["batch"].keys.each do |key|
+    
+    # @hops = Hop.all.paginate(:page => params[:page], :per_page => 30)
+    # @fermentables = Fermentable.all.paginate(:page => params[:page], :per_page => 30)
+    # @yeasts = Yeast.all.paginate(:page => params[:page], :per_page => 30)
+    # @specialties = Specialty.all.paginate(:page => params[:page], :per_page => 30)
+
     params["batch"].each do |batch|
       case
       when batch[0].start_with?("hop")
@@ -118,6 +123,10 @@ class BatchesController < ApplicationController
     batch = Batch.find(batch_id)
     batch.destroy
     redirect_to batches_path
+  end
+
+  def technicals
+    @batch = Batch.find(params[:id])
   end
 
 end

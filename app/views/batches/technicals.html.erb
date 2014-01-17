@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="row">
+    <div class="large-12 columns"><h2><%= @batch.name %></h2></div> 
+  </div>
+
+  <hr>
+
+  <div class="row">
+    <div class="large-9 columns large-centered">
+    <h2 class="grey_background">Edit Technicals</h2>
+        <%= form_for @batch do |f| %>
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+
+          <%= f.label :description %>
+          <%= f.text_area :description %>
+
+          <%= f.label :notes %>
+          <%= f.text_area :notes %>
+
+          <%= f.label :label_url %>
+          <%= f.text_field :label_url %>
+
+          <%= f.label :original_gravity %>
+          <%= f.text_field :original_gravity %>
+
+          <%= f.label :final_gravity %>
+          <%= f.text_field :final_gravity %>
+
+          <ul class="small-block-grid-3">
+
+          <li>
+          <%= f.label :brew_date %>
+          <%= f.date_select(:brew_date, :order => [:month, :day, :year]) %>
+          </li>
+
+          <li>
+          <%= f.label :secondary_date %>
+          <%= f.date_select(:secondary_date, :order => [:month, :day, :year]) %>
+          </li>
+
+          <li>
+          <%= f.label :bottling_date %>
+          <%= f.date_select(:bottling_date, :order => [:month, :day, :year]) %>
+          </li>
+
+          </ul>
+
+          </br>
+
+          <%= f.submit %>
+        <% end %>
+
+        <div class="panel">
+          <h5>Delete Batch</h5>
+          <p><%= button_to "Delete", destroy_batch_path(@batch), :data => { :confirm => "Are you sure?" }, :method => :delete, class: "button tiny alert" %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

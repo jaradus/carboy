@@ -38,10 +38,12 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "updated_at",      :null => false
   end
 
+  add_index "batches_fermentables", ["batch_id", "fermentable_id"], :name => "index_batches_fermentables_on_batch_id_and_fermentable_id"
+
   create_table "batches_hops", :force => true do |t|
     t.integer  "batch_id"
     t.integer  "hop_id"
-    t.integer  "quantity"
+    t.float    "quantity"
     t.text     "unit_measure"
     t.integer  "minutes_in_boil"
     t.float    "alpha_acid"
@@ -49,6 +51,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
+
+  add_index "batches_hops", ["batch_id", "hop_id"], :name => "index_batches_hops_on_batch_id_and_hop_id"
 
   create_table "batches_specialties", :force => true do |t|
     t.integer  "batch_id"
@@ -61,6 +65,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "updated_at",        :null => false
   end
 
+  add_index "batches_specialties", ["batch_id", "specialty_id"], :name => "index_batches_specialties_on_batch_id_and_specialty_id"
+
   create_table "batches_yeasts", :force => true do |t|
     t.integer  "batch_id"
     t.integer  "yeast_id"
@@ -70,6 +76,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
   end
+
+  add_index "batches_yeasts", ["batch_id", "yeast_id"], :name => "index_batches_yeasts_on_batch_id_and_yeast_id"
 
   create_table "beers", :force => true do |t|
     t.text     "name"
@@ -93,6 +101,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
+
+  add_index "beerstyles", ["beer_id", "regionalstyle_id"], :name => "index_beerstyles_on_beer_id_and_regionalstyle_id"
 
   create_table "fermentables", :force => true do |t|
     t.integer  "api_id"
@@ -171,6 +181,8 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
+
+  add_index "reviews", ["batch_id", "id"], :name => "index_reviews_on_batch_id_and_id"
 
   create_table "specialties", :force => true do |t|
     t.text     "name"

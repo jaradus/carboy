@@ -6,5 +6,7 @@ class CreateBeerstyleTable < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :beerstyles, [:beer_id, :regionalstyle_id]
   end
 end
