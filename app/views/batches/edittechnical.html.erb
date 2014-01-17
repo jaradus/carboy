@@ -8,7 +8,7 @@
   <div class="row">
     <div class="large-9 columns large-centered">
     <h2 class="grey_background">Edit Technicals</h2>
-        <%= form_for @batch do |f| %>
+        <%= form_for @batch, :url => {:action => "technical", :id => @batch} do |f| %>
           <%= f.label :name %>
           <%= f.text_field :name %>
 
@@ -31,24 +31,32 @@
 
           <li>
           <%= f.label :brew_date %>
-          <%= f.date_select(:brew_date, :order => [:month, :day, :year]) %>
+          <%= select_month(Date.today, {}, name: 'batch[brew_month') %>
+          <%= select_day(Date.today, {}, name: 'batch[brew_day') %>
+          <%= select_year(Date.today, {}, name: 'batch[brew_year') %>
           </li>
 
           <li>
           <%= f.label :secondary_date %>
-          <%= f.date_select(:secondary_date, :order => [:month, :day, :year]) %>
+          <%= select_month(Date.today, {}, name: 'batch[secondary_month') %>
+          <%= select_day(Date.today, {}, name: 'batch[secondary_day') %>
+          <%= select_year(Date.today, {}, name: 'batch[secondary_year') %>
           </li>
+
 
           <li>
           <%= f.label :bottling_date %>
-          <%= f.date_select(:bottling_date, :order => [:month, :day, :year]) %>
+          <%= select_month(Date.today, {}, name: 'batch[bottling_month') %>
+          <%= select_day(Date.today, {}, name: 'batch[bottling_day') %>
+          <%= select_year(Date.today, {}, name: 'batch[bottling_year') %>
           </li>
+
 
           </ul>
 
           </br>
 
-          <%= f.submit %>
+          <%= f.submit class: "button" %>
         <% end %>
 
         <div class="panel">

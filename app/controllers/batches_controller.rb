@@ -37,7 +37,6 @@ class BatchesController < ApplicationController
   end
 
   def update
-    
     # @hops = Hop.all.paginate(:page => params[:page], :per_page => 30)
     # @fermentables = Fermentable.all.paginate(:page => params[:page], :per_page => 30)
     # @yeasts = Yeast.all.paginate(:page => params[:page], :per_page => 30)
@@ -125,7 +124,15 @@ class BatchesController < ApplicationController
     redirect_to batches_path
   end
 
-  def technicals
+  def technical
+    @batch = Batch.find(params[:id])
+    @batch.update_attributes(name: params[:batch][:name], description: params[:batch][:description], notes: params[:batch][:notes], label_url: params[:batch][:label_url], rating: params[:batch][:rating], original_gravity: params[:batch][:original_gravity], final_gravity: params[:batch][:final_gravity], brew_date: Date.civil(params[:batch][:brew_year].to_i, params[:batch][:brew_month].to_i, params[:batch][:brew_day].to_i), secondary_date: Date.civil(params[:batch][:secondary_year].to_i, params[:batch][:secondary_month].to_i, params[:batch][:secondary_day].to_i), bottling_date: Date.civil(params[:batch][:bottling_year].to_i, params[:batch][:bottling_month].to_i, params[:batch][:bottling_day].to_i))
+
+
+    redirect_to batch_path(params[:id])
+  end
+
+  def edittechnical
     @batch = Batch.find(params[:id])
   end
 

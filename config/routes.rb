@@ -6,9 +6,15 @@ Carboy::Application.routes.draw do
 
   resources :hops, :fermentables, :beers, :batches, :yeasts, :specialties
 
+  resources :batches do
+    member do
+      put 'technical'
+    end
+  end
+
   get 'user/:id/dashboard' => 'home#dashboard', :as => :dashboard
 
-  get '/batches/:id/edit_technicals' => 'batches#technicals', :as => :edit_technicals_batch
+  get '/batches/:id/edit_technical' => 'batches#edittechnical', :as => :edit_technical_batch
 
   delete '/beers/:id/delete' => 'beers#destroy', :as => :destroy_beer
 
