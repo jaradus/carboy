@@ -7,7 +7,9 @@ class HomeController < ApplicationController
   end
 
   def dashboard
-    @batches = Batch.find_by_user_id(current_user.id)
+    @batches = Batch.where(:user_id => current_user.id)
+  
+      
   end
 
 end

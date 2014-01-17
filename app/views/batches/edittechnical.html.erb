@@ -21,6 +21,9 @@
           <%= f.label :label_url %>
           <%= f.text_field :label_url %>
 
+          <%= f.label :rating %>
+          <%= f.collection_select :rating, Batch::RATINGS, :to_s, :to_s, :include_blank => true %>
+
           <%= f.label :original_gravity %>
           <%= f.text_field :original_gravity %>
 

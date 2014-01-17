@@ -20,7 +20,7 @@ class BatchesController < ApplicationController
   end
 
   def create
-    @batch = Batch.create(params[:batch])
+    @batch = Batch.create(beer_id: params[:batch][:beer_id], name: params[:batch][:name], user_id: current_user.id)
 
       if @batch.save
         redirect_to batch_path(@batch)

@@ -10,10 +10,43 @@
   <h3>Batches in Production</h3>
   <hr>
 
-  <div class="progress small-#">
-  <!-- TODO: compare current date against brew date and lengths. See status -->
-    <%= @batch %><span class="meter" style="width: 50%"></span>
-  </div>
+<table>
+  <thead>
+    <tr>
+      <th>Batch</th>
+      <th>Brew Date</th>
+      <th>Progress</th>
+      <th>Bottling Date</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @batches.each do |batch| %>
+  <tr>
+    <td colspan="4">
+      <%= batch.beer.name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= batch.name %>
+    </td>
+    <td>
+      <%= batch.brew_date %>
+    </td>
+    <td>
+        <div class="progress small-#">
+        <!-- TODO: compare current date against brew date and lengths. See status -->
+          <span class="meter" style="width: <%= flatten(batch.bottling_date) %>%"></span>
+        </div>
+    </td>
+    <td>
+      <%= batch.bottling_date %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
 
 </div>
 <% end %>

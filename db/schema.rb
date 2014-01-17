@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20140116045056) do
     t.text    "description"
     t.text    "notes"
     t.text    "label_url"
-    t.integer "rating"
+    t.text    "rating"
     t.integer "original_gravity", :default => 9999
     t.integer "final_gravity",    :default => 9999
     t.date    "brew_date"
