@@ -33,10 +33,10 @@
     <td>
       <%= batch.brew_date %>
     </td>
-    <td>
+    <td width="600px">
         <div class="progress small-#">
         <!-- TODO: compare current date against brew date and lengths. See status -->
-          <span class="meter" style="width: <%= flatten(batch.bottling_date) %>%"></span>
+          <span class="meter" style="width: <%= (((batch.bottling_date.year-batch.brew_date.year)*356)+((batch.bottling_date.month-batch.brew_date.month)*30)+((batch.bottling_date.day-batch.brew_date.day))) %>%"></span>
         </div>
     </td>
     <td>

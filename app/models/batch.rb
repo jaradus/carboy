@@ -31,8 +31,5 @@ class Batch < ActiveRecord::Base
   # accepts_nested_attributes_for :yeasts, :reject_if => lambda { |a| a[:content].blank? }
   # accepts_nested_attributes_for :specialties, :reject_if => lambda { |a| a[:content].blank? }
 
-    def flatten(date)
-      (date.year.to_s+date.month.to_s+date.day.to_s).to_i
-    end
 
 end
